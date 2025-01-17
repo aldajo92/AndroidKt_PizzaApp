@@ -1,13 +1,16 @@
 package com.aldajo92.pizzasapp.repository
 
 import com.aldajo92.pizzasapp.data.PizzaDataSource
+import com.aldajo92.pizzasapp.framework.PizzaAPI
 
 // 4. Repository
 class PizzaRepository(
-    private val pizzaDS: PizzaDataSource
+    private val pizzaDS: PizzaDataSource,
+    private val api: PizzaAPI // Temporal solution
 ) {
-    fun getNames(): List<String> {
-        return pizzaDS.getList().map { it.name }
+
+    suspend fun getNames(): List<String> {
+        return api.getPizzas().map { it.name }
     }
 
     fun removePizza(name: String) {

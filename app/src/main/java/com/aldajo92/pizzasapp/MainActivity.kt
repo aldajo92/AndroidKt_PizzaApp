@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.aldajo92.pizzasapp.data.MockDataSource
+import com.aldajo92.pizzasapp.framework.RetrofitInstance
 import com.aldajo92.pizzasapp.presentation.main.MainScreen
 import com.aldajo92.pizzasapp.presentation.main.MainViewModel
 import com.aldajo92.pizzasapp.repository.PizzaRepository
@@ -12,7 +13,10 @@ import com.aldajo92.pizzasapp.repository.PizzaRepository
 class MainActivity : ComponentActivity() {
 
     private val mainViewModel = MainViewModel(
-        PizzaRepository(MockDataSource())
+        PizzaRepository(
+            MockDataSource(),
+            RetrofitInstance.pizzaApi
+        )
     ) // Warning!! Should be provided by viewModel provider
 
     override fun onCreate(savedInstanceState: Bundle?) {

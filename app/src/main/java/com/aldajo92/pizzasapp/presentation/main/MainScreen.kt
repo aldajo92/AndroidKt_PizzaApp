@@ -32,7 +32,7 @@ fun MainScreen(
     val selectedPizza = selectedPizzaState.value
 
     LaunchedEffect(Unit) {
-        delay(3000)
+//        delay(3000)
         mainViewModel.getPizzas()
     }
 
